@@ -12,6 +12,10 @@
     home = "/Users/${user}";
   };
   system.stateVersion = 6;
+  system.keyboard = {
+    enableKeyMapping = true;
+    remapCapsLockToEscape = true;
+  };
   system.defaults = {
     NSGlobalDomain = {
       AppleInterfaceStyle = "Dark";
@@ -41,6 +45,8 @@
     casks = [
       "wezterm"
       "claude-code"
+      "raycast"
+      "wispr-flow"
     ];
   };
 }
