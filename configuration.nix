@@ -47,6 +47,8 @@
       "claude-code"
       "raycast"
       "wispr-flow"
+      "brave-browser"
+      "chatgpt"
     ];
   };
 }
