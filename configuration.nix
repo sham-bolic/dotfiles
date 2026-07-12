@@ -45,6 +45,7 @@
     casks = [
       "wezterm"
       "claude-code"
+      "claude"
       "raycast"
       "wispr-flow"
       "brave-browser"
