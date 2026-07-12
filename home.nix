@@ -1,4 +1,4 @@
-{ config, pkgs, user, ... }:
+{ config, pkgs, user, treehouse, ... }:
 
 let
   dotfiles = "${config.home.homeDirectory}/.dotfiles";
@@ -16,6 +16,7 @@ in
     jq        # json on the command line
     lazygit
     neovim
+    treehouse.packages.${pkgs.stdenv.system}.default
     # the font everything renders in
     nerd-fonts.hack
   ];

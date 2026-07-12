@@ -28,6 +28,7 @@
   nix-homebrew = {
     enable = true;
     inherit user;
+    autoMigrate = true;  # adopt the pre-existing /opt/homebrew install, keep its packages
   };
   homebrew = {
     enable = true;
