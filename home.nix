@@ -14,6 +14,7 @@ in
     fd        # fast find
     fzf       # fuzzy finder
     jq        # json on the command line
+    gh        # github cli
     lazygit
     neovim
     treehouse.packages.${pkgs.stdenv.system}.default
