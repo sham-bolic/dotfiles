@@ -17,6 +17,8 @@ in
     gh        # github cli
     lazygit
     neovim
+    nodejs    # node.js runtime + npm
+    pnpm      # fast, disk-efficient node package manager
     treehouse.packages.${pkgs.stdenv.system}.default
     # the font everything renders in
     nerd-fonts.hack
