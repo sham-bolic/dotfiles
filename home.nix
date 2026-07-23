@@ -17,6 +17,9 @@ in
     gh        # github cli
     lazygit
     neovim
+    alejandra   # nix formatter, used by conform.nvim
+    nixd        # nix language server, not distributed via mason
+    tree-sitter # parser compiler CLI required by nvim-treesitter's main branch
     nodejs    # node.js runtime + npm
     pnpm      # fast, disk-efficient node package manager
     treehouse.packages.${pkgs.stdenv.system}.default
