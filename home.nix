@@ -39,9 +39,16 @@ in
       push = "git push";
       pull = "git pull";
       m = "git switch main";
-      cc = "claude --dangerously-skip-permissions";
+      cc = "claude"; 
       co = "codex --full-auto";
     };
+  };
+
+  programs.eza = {
+    enable = true;
+    enableZshIntegration = true;
+    icons = "never";
+    git = true;
   };
 
   programs.starship = {
@@ -73,4 +80,10 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
   home.file.".config/opencode/AGENTS.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+
+  # Skills for Claude/Codex/etc: vendored in-repo so they're reproducible
+  # without a network install. ~/.claude/skills/<name> symlinks expect the
+  # real files under ~/.agents/skills/<name>.
+  home.file.".agents/skills".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.agents/skills";
 }
