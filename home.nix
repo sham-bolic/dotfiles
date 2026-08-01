@@ -1,27 +1,29 @@
-{ config, pkgs, user, treehouse, ... }:
-
-let
-  dotfiles = "${config.home.homeDirectory}/.dotfiles";
-in
-
 {
+  config,
+  pkgs,
+  user,
+  treehouse,
+  ...
+}: let
+  dotfiles = "${config.home.homeDirectory}/.dotfiles";
+in {
   home.username = user;
   home.homeDirectory = "/Users/${user}";
   home.stateVersion = "24.11";
   home.packages = with pkgs; [
     # cli i use constantly
-    ripgrep   # fast search
-    fd        # fast find
-    fzf       # fuzzy finder
-    jq        # json on the command line
-    gh        # github cli
+    ripgrep # fast search
+    fd # fast find
+    fzf # fuzzy finder
+    jq # json on the command line
+    gh # github cli
     lazygit
     neovim
-    alejandra   # nix formatter, used by conform.nvim
-    nixd        # nix language server, not distributed via mason
+    alejandra # nix formatter, used by conform.nvim
+    nixd # nix language server, not distributed via mason
     tree-sitter # parser compiler CLI required by nvim-treesitter's main branch
-    nodejs    # node.js runtime + npm
-    pnpm      # fast, disk-efficient node package manager
+    nodejs # node.js runtime + npm
+    pnpm # fast, disk-efficient node package manager
     treehouse.packages.${pkgs.stdenv.system}.default
     # the font everything renders in
     nerd-fonts.hack
@@ -31,8 +33,8 @@ in
 
   programs.zsh = {
     enable = true;
-    autosuggestion.enable = true;      # ghost text from history
-    syntaxHighlighting.enable = true;  # commands turn green when valid
+    autosuggestion.enable = true; # ghost text from history
+    syntaxHighlighting.enable = true; # commands turn green when valid
     initContent = ''
       bindkey '^f' autosuggest-accept
     '';
@@ -42,8 +44,8 @@ in
       push = "git push";
       pull = "git pull";
       m = "git switch main";
-      cc = "claude"; 
-      co = "codex --full-auto";
+      cc = "claude --permission-mode auto";
+      co = "codex";
     };
   };
 
@@ -79,6 +81,10 @@ in
 
   home.file.".claude/CLAUDE.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+  home.file.".claude/skills".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.agents/skills";
+  home.file.".codex/AGENTS.md".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
   home.file.".pi/agent/AGENTS.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
   home.file.".pi/agent/settings.json" = {
@@ -91,8 +97,6 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.pi/agent/extensions";
   home.file.".pi/agent/themes".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.pi/agent/themes";
-  home.file.".codex/AGENTS.md".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
   home.file.".config/opencode/AGENTS.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
 
