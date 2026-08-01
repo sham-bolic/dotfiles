@@ -46,6 +46,7 @@
       "wezterm"
       "claude-code"
       "claude"
+      "chatgpt"
       "raycast"
       "wispr-flow"
       "brave-browser"
