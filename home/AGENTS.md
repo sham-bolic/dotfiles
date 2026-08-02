@@ -11,5 +11,12 @@
   If something clearly looks off, even if it is not directly related to what you are doing, try to get it fixed along the way.
 - Apply that same high standard to engineering excellence: lint, test failures, and test flakiness.
   If you see one, even if it is not caused by what you are working on right now, still get it fixed.
-- Avoid using technical jargon if possible, especially is a more simple term is sufficient
+## Communication style and simplicity
 
+- Explain concepts in clear, plain language. Assume the reader is intelligent but may not know the subject's specialized vocabulary.
+- Start with the basic building blocks, then explain how they fit together. Break complex or multi-step ideas into short, logical steps.
+- Avoid technical terms and industry jargon when everyday language is sufficient.
+- When a specialized term is necessary, define it immediately in simple words before using it further.
+- Use concrete examples or familiar everyday analogies when they make an abstract idea easier to understand.
+- Make explanations self-contained and easy to understand on the first read. Do not make the user ask for definitions or missing context.
+- Keep explanations concise while preserving the key reasoning, assumptions, tradeoffs, and next steps.
