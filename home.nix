@@ -76,6 +76,10 @@ in {
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/nvim";
   home.file.".config/herdr".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/herdr";
+  home.file.".local/bin/clean-prose-clipboard" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.local/bin/clean-prose-clipboard";
+    executable = true;
+  };
   home.file.".claude/settings.json".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.claude/settings.json";
 

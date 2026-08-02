@@ -1,0 +1,49 @@
+#!/bin/sh
+
+set -eu
+
+normalize_prose() {
+  awk '
+    function flush_paragraph() {
+      if (paragraph != "") {
+        if (printed_paragraph) {
+          print ""
+        }
+        print paragraph
+        paragraph = ""
+        printed_paragraph = 1
+      }
+    }
+
+    {
+      sub(/\r$/, "")
+      sub(/^[[:space:]]+/, "")
+      sub(/[[:space:]]+$/, "")
+
+      if ($0 == "") {
+        flush_paragraph()
+      } else if (paragraph == "") {
+        paragraph = $0
+      } else {
+        paragraph = paragraph " " $0
+      }
+    }
+
+    END {
+      flush_paragraph()
+    }
+  '
+}
+
+case "${1:-}" in
+  --filter)
+    normalize_prose
+    ;;
+  "")
+    pbpaste | normalize_prose | pbcopy
+    ;;
+  *)
+    echo "usage: clean-prose-clipboard [--filter]" >&2
+    exit 2
+    ;;
+esac
