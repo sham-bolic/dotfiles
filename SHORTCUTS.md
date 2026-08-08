@@ -53,14 +53,14 @@ LSP servers installed via mason: `lua_ls`, `ts_ls`, `pyright`, `ruff` (plus `nix
 
 ## Neovim - Completion (blink.cmp)
 
-Uses the `default` blink.cmp keymap preset:
+Uses the `super-tab` blink.cmp keymap preset:
 
 | Key | Action |
 |---|---|
 | `<C-space>` | Open/trigger completion menu |
 | `<C-n>` / `<Down>` | Next completion item |
 | `<C-p>` / `<Up>` | Previous completion item |
-| `<C-y>` / `<Tab>` | Accept selected item |
+| `<C-y>` / `<Tab>` / `<Right>` | Accept current item, or the first item if none is selected |
 | `<C-e>` | Cancel completion |
 | `<C-k>` | Toggle signature help |
 
