@@ -24,3 +24,9 @@ description = "clean wrapped prose in clipboard"
 [theme]
 name = "catppuccin"
 auto_switch = false
+
+[theme.custom]
+# Keep secondary labels readable against the dark Catppuccin panels.
+overlay0 = "#a6adc8"
+overlay1 = "#bac2de"
+subtext0 = "#bac2de"

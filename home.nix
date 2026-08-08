@@ -30,6 +30,8 @@ in {
   ];
   fonts.fontconfig.enable = true;
   home.sessionVariables.EDITOR = "nvim";
+  # eza's default blue is too dark in the Rose Pine terminal palette.
+  home.sessionVariables.EZA_COLORS = "di=1;96";
 
   programs.zsh = {
     enable = true;
