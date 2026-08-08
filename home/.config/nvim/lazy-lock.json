@@ -39,6 +39,10 @@
     "branch": "master",
     "commit": "2043096b7ae81e8350ec8cceb3e7ab08dca1dcfe"
   },
+  "nvim-autopairs": {
+    "branch": "master",
+    "commit": "7b9923abad60b903ece7c52940e1321d39eccc79"
+  },
   "nvim-lspconfig": {
     "branch": "master",
     "commit": "d592c1e6ad9a0a01b3d5ed3f0345d68407167181"

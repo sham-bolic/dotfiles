@@ -11,7 +11,7 @@ Leader key in Neovim is **Space**.
 | `<C-a>` | Normal | Select all (`ggVG`) |
 | `p` over a visual selection | Visual | Paste without clobbering clipboard (keeps yanked text) |
 
-Core options worth remembering: `relativenumber` is on (use `5j` / `8k` style relative jumps), `scrolloff=16` keeps the cursor away from screen edges, `undofile` gives persistent undo across sessions, clipboard is shared with the system (`unnamedplus`).
+Core options worth remembering: `relativenumber` is on (use `5j` / `8k` style relative jumps), `scrolloff=16` keeps the cursor away from screen edges, `undofile` gives persistent undo across sessions, clipboard is shared with the system (`unnamedplus`). In Insert mode, `nvim-autopairs` adds matching brackets and quotes; typing an existing closing character moves over it instead of duplicating it.
 
 ## Neovim - Find / Files (snacks.nvim, oil.nvim)
 
