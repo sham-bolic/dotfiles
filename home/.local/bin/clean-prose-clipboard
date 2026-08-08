@@ -40,6 +40,9 @@ case "${1:-}" in
     normalize_prose
     ;;
   "")
+    # Herdr sends copy-mode text to the local clipboard asynchronously.
+    # Give that write a moment to land before reading it back.
+    sleep 0.2
     pbpaste | normalize_prose | pbcopy
     ;;
   *)
