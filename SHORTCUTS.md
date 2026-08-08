@@ -60,7 +60,7 @@ Uses the `super-tab` blink.cmp keymap preset:
 | `<C-space>` | Open/trigger completion menu |
 | `<C-n>` / `<Down>` | Next completion item |
 | `<C-p>` / `<Up>` | Previous completion item |
-| `<C-y>` / `<Tab>` / `<Right>` | Accept current item, or the first item if none is selected |
+| `<C-y>` / `<Tab>` / `<Right>` / `<Enter>` | Accept current item, or the first item if none is selected |
 | `<C-e>` | Cancel completion |
 | `<C-k>` | Toggle signature help |
 
