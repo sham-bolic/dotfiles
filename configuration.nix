@@ -38,6 +38,7 @@
     onActivation.autoUpdate = true;
     onActivation.extraFlags = ["--force"];
     brews = [
+      "nvm"
       "pi-coding-agent"
     ];
     casks = [

@@ -14,12 +14,25 @@ in {
     ripgrep # fast search
     jq # json on the command line
     gh # github cli
-    nodejs # node.js runtime + npm
     pnpm # fast, disk-efficient node package manager
     # the font everything renders in
     nerd-fonts.hack
   ];
   fonts.fontconfig.enable = true;
+  home.sessionVariables.NVM_DIR = "$HOME/.nvm";
+  home.activation.createNvmDirectory = config.lib.dag.entryAfter ["writeBoundary"] ''
+    $DRY_RUN_CMD mkdir -p "$HOME/.nvm"
+  '';
+  home.activation.installDefaultNode = config.lib.dag.entryAfter ["createNvmDirectory"] ''
+    $DRY_RUN_CMD /bin/zsh -c '
+      export NVM_DIR="$HOME/.nvm"
+      source /opt/homebrew/opt/nvm/nvm.sh
+      if ! nvm version default >/dev/null 2>&1; then
+        nvm install --lts
+        nvm alias default "lts/*"
+      fi
+    '
+  '';
   # eza's default blue is too dark in the Rose Pine terminal palette.
   home.sessionVariables.EZA_COLORS = "di=1;96";
 
@@ -29,6 +42,7 @@ in {
     syntaxHighlighting.enable = true; # commands turn green when valid
     initContent = ''
       bindkey '^f' autosuggest-accept
+      [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && source "/opt/homebrew/opt/nvm/nvm.sh"
     '';
     shellAliases = {
       ".." = "cd ..";
