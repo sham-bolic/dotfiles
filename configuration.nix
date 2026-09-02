@@ -46,6 +46,7 @@
       "codex"
       "chatgpt"
       "raycast"
+      "willow-voice"
       "brave-browser"
     ];
   };
