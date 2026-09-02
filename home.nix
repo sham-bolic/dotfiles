@@ -19,6 +19,7 @@ in {
     nerd-fonts.hack
   ];
   fonts.fontconfig.enable = true;
+  home.sessionVariables.EDITOR = "zed --wait";
   home.sessionVariables.NVM_DIR = "$HOME/.nvm";
   home.activation.createNvmDirectory = config.lib.dag.entryAfter ["writeBoundary"] ''
     $DRY_RUN_CMD mkdir -p "$HOME/.nvm"
@@ -75,6 +76,14 @@ in {
   };
 
   # Edit-in-place: the real file stays in my repo, ~/.config just points at it.
+  home.file.".config/zed/settings.json" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/zed/settings.json";
+    force = true;
+  };
+  home.file.".config/zed/keymap.json" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/zed/keymap.json";
+    force = true;
+  };
   home.file.".codex/AGENTS.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
   home.file.".pi/agent/AGENTS.md".source =

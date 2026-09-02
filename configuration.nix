@@ -42,6 +42,7 @@
       "pi-coding-agent"
     ];
     casks = [
+      "zed"
       "codex"
       "chatgpt"
       "raycast"
