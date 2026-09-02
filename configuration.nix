@@ -38,17 +38,12 @@
     onActivation.autoUpdate = true;
     onActivation.extraFlags = ["--force"];
     brews = [
-      "herdr"
       "pi-coding-agent"
     ];
     casks = [
-      "wezterm"
-      "claude-code@latest"
-      "claude"
       "codex"
       "chatgpt"
       "raycast"
-      "wispr-flow"
       "brave-browser"
     ];
   };

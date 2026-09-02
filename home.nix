@@ -2,7 +2,6 @@
   config,
   pkgs,
   user,
-  treehouse,
   ...
 }: let
   dotfiles = "${config.home.homeDirectory}/.dotfiles";
@@ -13,23 +12,14 @@ in {
   home.packages = with pkgs; [
     # cli i use constantly
     ripgrep # fast search
-    fd # fast find
-    fzf # fuzzy finder
     jq # json on the command line
     gh # github cli
-    lazygit
-    neovim
-    alejandra # nix formatter, used by conform.nvim
-    nixd # nix language server, not distributed via mason
-    tree-sitter # parser compiler CLI required by nvim-treesitter's main branch
     nodejs # node.js runtime + npm
     pnpm # fast, disk-efficient node package manager
-    treehouse.packages.${pkgs.stdenv.system}.default
     # the font everything renders in
     nerd-fonts.hack
   ];
   fonts.fontconfig.enable = true;
-  home.sessionVariables.EDITOR = "nvim";
   # eza's default blue is too dark in the Rose Pine terminal palette.
   home.sessionVariables.EZA_COLORS = "di=1;96";
 
@@ -46,7 +36,6 @@ in {
       push = "git push";
       pull = "git pull";
       m = "git switch main";
-      cc = "claude --permission-mode auto";
       co = "codex";
     };
   };
@@ -72,21 +61,6 @@ in {
   };
 
   # Edit-in-place: the real file stays in my repo, ~/.config just points at it.
-  home.file.".config/wezterm".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/wezterm";
-  home.file.".config/nvim".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/nvim";
-  home.file.".config/herdr".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/herdr";
-  home.file.".local/bin/clean-prose-clipboard".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.local/bin/clean-prose-clipboard";
-  home.file.".claude/settings.json".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.claude/settings.json";
-
-  home.file.".claude/CLAUDE.md".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
-  home.file.".claude/skills".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.agents/skills";
   home.file.".codex/AGENTS.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
   home.file.".pi/agent/AGENTS.md".source =
@@ -104,9 +78,7 @@ in {
   home.file.".config/opencode/AGENTS.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
 
-  # Skills for Claude/Codex/etc: vendored in-repo so they're reproducible
-  # without a network install. ~/.claude/skills/<name> symlinks expect the
-  # real files under ~/.agents/skills/<name>.
+  # Agent skills are vendored in the repo so they remain reproducible.
   home.file.".agents/skills".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.agents/skills";
 }
