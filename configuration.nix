@@ -50,4 +50,14 @@
       "brave-browser"
     ];
   };
+
+  # Homebrew's openssl@3 post-install step normally creates this link. Restore
+  # it after Nix-managed Homebrew activation so Node can find its trusted CAs.
+  system.activationScripts.postActivation.text = ''
+    ca_bundle=/opt/homebrew/etc/ca-certificates/cert.pem
+    openssl_ca_bundle=/opt/homebrew/etc/openssl@3/cert.pem
+    if [ -f "$ca_bundle" ]; then
+      /bin/ln -sfn ../ca-certificates/cert.pem "$openssl_ca_bundle"
+    fi
+  '';
 }
