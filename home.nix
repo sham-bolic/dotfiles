@@ -51,7 +51,7 @@ in {
       push = "git push";
       pull = "git pull";
       m = "git switch main";
-      co = "codex";
+      co = "codex --approve-for-me";
     };
   };
 
